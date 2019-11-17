@@ -1,0 +1,14 @@
+CC = javac
+JVM = java
+DIR_src = ./src/
+DIR_bin = ./bin/
+
+make:
+	mkdir -p $(DIR_bin)
+	$(CC) $(DIR_src)*.java -d $(DIR_bin)
+
+run:
+	$(JVM) -cp $(DIR_bin) Driver
+
+clean:
+	rm -rf $(DIR_bin)
