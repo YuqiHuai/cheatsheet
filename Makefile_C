@@ -1,0 +1,12 @@
+CC=gcc
+SDIR=src
+DEPS=$(SDIR)/file1.c $(SDIR)/file2.c $(SDIR)/file3.c
+BDIR=bin
+INCLUDE=include
+
+default: $(SDEPS)
+	mkdir -p $(BDIR)
+	$(CC) -o $(BDIR)/output $(DEPS) -I $(INCLUDE)
+
+clean:
+	rm -rf $(BDIR)
