@@ -42,14 +42,18 @@ export const increment = () {
 ### ./
 #### index.js
 ```javascript
-import {createStore} from 'redux';
-import allReducers from './reducers';
-import {Provider} from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import allReducers from './store/reducers';
+import { Provider } from 'react-redux';
+import reduxThunk from 'redux-thunk'
 
 
 const store = createStore(
-    allReducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  allReducers, 
+  compose(
+    applyMiddleware(reduxThunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
+  )
 );
 
 ReactDOM.render(
